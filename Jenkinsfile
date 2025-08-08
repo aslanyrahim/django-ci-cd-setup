@@ -14,16 +14,16 @@ pipeline {
             }
         }
 
-        // stage('Set up Python Virtualenv') {
-        //     steps {
-        //         sh '''
-        //             $PYTHON -m venv $VENV_DIR
-        //             . $VENV_DIR/bin/activate
-        //             pip install --upgrade pip
-        //             pip install -r requirements.txt
-        //         '''
-        //     }
-        // }
+        stage('Set up Python Virtualenv') {
+            steps {
+                sh '''
+                    $PYTHON -m venv $VENV_DIR
+                    . $VENV_DIR/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
+            }
+        }
 
         stage('Run Tests') {
             steps {
@@ -62,7 +62,7 @@ pipeline {
     post {
         always {
             // Clean up virtualenv after build
-            // sh 'rm -rf $VENV_DIR'
+            sh 'rm -rf $VENV_DIR'
 			echo 'Pipeline completed.'
         }
         failure {
