@@ -34,14 +34,14 @@ pipeline {
             }
         }
 
-        stage('Collect Static Files') {
-            steps {
-                sh '''
-                    . $VENV_DIR/bin/activate
-                    python manage.py collectstatic --noinput
-                '''
-            }
-        }
+        // stage('Collect Static Files') {
+        //     steps {
+        //         sh '''
+        //             . $VENV_DIR/bin/activate
+        //             python manage.py collectstatic --noinput
+        //         '''
+        //     }
+        // }
 
         stage('Run Migrations') {
             steps {
